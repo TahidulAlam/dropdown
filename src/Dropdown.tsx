@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
-"use client";
 import React, {
   useState,
   useRef,
@@ -524,7 +522,6 @@ const Dropdown: React.FC<DropdownProps> = React.memo(
           menuRect.width / 2;
       }
 
-      // Apply offset
       top += menuOffset.y;
       left += menuOffset.x;
 

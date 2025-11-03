@@ -4,6 +4,7 @@ import "./App.css";
 import Dropdown from "./Dropdown";
 import { DiReact } from "react-icons/di";
 import { BiLogoTypescript, BiPlus } from "react-icons/bi";
+import { BsGithub } from "react-icons/bs";
 
 function App() {
   const [position, setPosition] = useState<
@@ -19,7 +20,6 @@ function App() {
     "right"
   );
 
-  // 🔹 Generate very deep nested menu recursively
   const generateDeepSubmenu = (
     prefix: string,
     depth = 1,
@@ -37,7 +37,6 @@ function App() {
     return children;
   };
 
-  // 🔹 Helper to generate menu groups (Menu 1–4)
   const generateMenu = (menuNumber: number) => [
     {
       label: `Submenu ${menuNumber}.1`,
@@ -57,7 +56,6 @@ function App() {
     },
   ];
 
-  // 🔹 Build full menu tree
   const menuItems = [
     {
       labelHeader: "Menu Group 1",
@@ -79,9 +77,10 @@ function App() {
   ];
 
   return (
-    <div className="h-screen flex flex-col items-center p-20 gap-10 bg-gray-50">
+    <div className="h-screen flex flex-col items-center p-20 gap-2 bg-gray-50 relative">
       {/* Dropdown Controls */}
-      <h1 className="text-4xl font-semibold">Multilabel DropDown</h1>
+      <h1 className="text-4xl font-semibold">DropDown Ninja</h1>
+      <h1>Advanced Multi-Level Menu System</h1>
       <p className="flex items-center text-2xl justify-center">
         <DiReact /> <BiPlus />
         <BiLogoTypescript />
@@ -105,7 +104,7 @@ function App() {
             <button
               key={pos}
               onClick={() => setPosition(pos as any)}
-              className={`px-4 py-2 rounded border ${
+              className={`px-4 py-2 rounded-md border cursor-pointer ${
                 position === pos
                   ? "bg-blue-600 text-white"
                   : "bg-white hover:bg-gray-100"
@@ -124,7 +123,7 @@ function App() {
             <button
               key={subPos}
               onClick={() => setSubmenuPosition(subPos as any)}
-              className={`px-4 py-2 rounded border ${
+              className={`px-4 py-2 rounded-md border ${
                 submenuPosition === subPos
                   ? "bg-green-600 text-white"
                   : "bg-white hover:bg-gray-100"
@@ -143,7 +142,14 @@ function App() {
         submenuPosition={submenuPosition}
         searchInput={true}
       />
-      <a href="/">go to github repo</a>
+      <div className="absolute bottom-0 p-5">
+        <a
+          href="https://github.com/TahidulAlam/dropdown"
+          className="text-base font-semibold flex items-center gap-2 hover:border-b"
+        >
+          Go to <BsGithub />
+        </a>
+      </div>
     </div>
   );
 }
